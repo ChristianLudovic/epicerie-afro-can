@@ -3,7 +3,7 @@ import "./globals.css";
 import localFont  from "next/font/local";
 
 const montserrat = localFont({
-  src: './montserrat-font/Montserrat-VariableFont_wght.ttf',
+  src: '../public/montserrat-font/Montserrat-VariableFont_wght.ttf',
   variable: '--montserrat',
   display: 'swap',
 })
@@ -21,7 +21,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${montserrat.className} antialiased px-4`}
+        className={`${montserrat.className} antialiased px-4 text-[#3D4C5E]`}
       >
         {children}
       </body>

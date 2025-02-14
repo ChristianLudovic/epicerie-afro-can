@@ -1,3 +1,9 @@
+import Image from "next/image"
+import image0001 from "@/public/0001.svg"
+import image0002 from "@/public/0002.svg"
+import image0003 from "@/public/0003.svg"
+
+
 export default function Header(){
     return(
         <div className="max-w-[1298px] w-full mx-auto flex items-start justify-between mt-[28px]">
@@ -31,15 +37,9 @@ export default function Header(){
                 </div>
             </div>
             <div className="max-w-[670px] w-full grid grid-cols-3 gap-4">
-                <div className="col-span-3 bg-black max-w-[670px] w-full h-[310px] ">
-
-                </div>
-                <div className="col-span-2 bg-black max-w-[670px] w-full h-[216px]">
-
-                </div>
-                <div className="col-span-1 bg-black max-w-[670px] w-full h-[216px]">
-
-                </div>
+                <Image src={image0001} alt="" className="col-span-3 max-w-[670px] w-full h-[310px] rounded-[32px] object-cover" />
+                <Image src={image0002} alt="" className="col-span-2 max-w-[670px] w-full h-[216px] rounded-[32px] object-cover" />
+                <Image src={image0003} alt="" className="col-span-1 max-w-[670px] w-full h-[216px] rounded-[32px] object-cover" />
             </div>
         </div>
     )

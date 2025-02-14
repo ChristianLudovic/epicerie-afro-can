@@ -3,11 +3,11 @@ import ProductCard from "./basics/ProductCard";
 
 export default function ProductOverview(){
     return(
-        <div className="max-w-[1298px] w-full mx-auto mt-[60px] space-y-[52px]">
+        <div className="max-w-[1298px] w-full mx-auto mt-[100px] space-y-[52px]">
             <div className="space-y-7">
-                <h2 className="text-[38px] font-bold text-[#3D4C5E] leading-[110%] tracking-[-3%]">Des produits et des aliments de qualité</h2>
+                <h2 className="max-w-[600px] text-[38px] font-bold text-[#3D4C5E] leading-[110%] tracking-[-3%]">Des produits et des aliments de qualité</h2>
                 <div className="flex items-center space-x-4">
-                    <CategoryBadge tagName="Aliments" categoryQuantity={100} />
+                    <CategoryBadge tagName="🥗 Legumes" categoryQuantity={100} />
                     <CategoryBadge tagName="Produits" categoryQuantity={100} />
                 </div>
             </div>
@@ -17,6 +17,61 @@ export default function ProductOverview(){
                         productName="Concombre Hollandais" 
                         productDescription="Crevettes, citron, fromage italien, courgettes, ail, citron vert."
                         productImagePath="/concombre.svg"
+                    />
+                    <ProductCard 
+                        productName="Concombre Hollandais" 
+                        productDescription="Crevettes, citron, fromage italien, courgettes, ail, citron vert."
+                        productImagePath="../../public/products/concombre.svg"
+                    />
+                    <ProductCard 
+                        productName="Concombre Hollandais" 
+                        productDescription="Crevettes, citron, fromage italien, courgettes, ail, citron vert."
+                        productImagePath="../../public/products/concombre.svg"
+                    />
+                    <ProductCard 
+                        productName="Concombre Hollandais" 
+                        productDescription="Crevettes, citron, fromage italien, courgettes, ail, citron vert."
+                        productImagePath="../../public/products/concombre.svg"
+                    />
+                    <ProductCard 
+                        productName="Concombre Hollandais" 
+                        productDescription="Crevettes, citron, fromage italien, courgettes, ail, citron vert."
+                        productImagePath="../../public/products/concombre.svg"
+                    />
+                    <ProductCard 
+                        productName="Concombre Hollandais" 
+                        productDescription="Crevettes, citron, fromage italien, courgettes, ail, citron vert."
+                        productImagePath="../../public/products/concombre.svg"
+                    />
+                    <ProductCard 
+                        productName="Concombre Hollandais" 
+                        productDescription="Crevettes, citron, fromage italien, courgettes, ail, citron vert."
+                        productImagePath="../../public/products/concombre.svg"
+                    />
+                    <ProductCard 
+                        productName="Concombre Hollandais" 
+                        productDescription="Crevettes, citron, fromage italien, courgettes, ail, citron vert."
+                        productImagePath="../../public/products/concombre.svg"
+                    />
+                    <ProductCard 
+                        productName="Concombre Hollandais" 
+                        productDescription="Crevettes, citron, fromage italien, courgettes, ail, citron vert."
+                        productImagePath="../../public/products/concombre.svg"
+                    />
+                    <ProductCard 
+                        productName="Concombre Hollandais" 
+                        productDescription="Crevettes, citron, fromage italien, courgettes, ail, citron vert."
+                        productImagePath="../../public/products/concombre.svg"
+                    />
+                    <ProductCard 
+                        productName="Concombre Hollandais" 
+                        productDescription="Crevettes, citron, fromage italien, courgettes, ail, citron vert."
+                        productImagePath="../../public/products/concombre.svg"
+                    />
+                    <ProductCard 
+                        productName="Concombre Hollandais" 
+                        productDescription="Crevettes, citron, fromage italien, courgettes, ail, citron vert."
+                        productImagePath="../../public/products/concombre.svg"
                     />
                     <ProductCard 
                         productName="Concombre Hollandais" 

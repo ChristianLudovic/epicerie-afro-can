@@ -3,7 +3,7 @@ import { useForm, ValidationError } from "@formspree/react";
 export default function ContactForm(){
     const [state, handleSubmit] = useForm("xqaedrdk");
     if (state.succeeded) {
-        return <p>Thanks for joining!</p>;
+        return <p>Merci pour votre message!</p>;
     }
     return (
       <form 
@@ -15,6 +15,7 @@ export default function ContactForm(){
               name="name" 
               id="name" 
               className="rounded-full text-[14px] py-3 px-5 border border-solid border-[#E0E0E0] w-full focus:outline-none"
+              placeholder="Nom *"
               required    
           />
           <ValidationError 
@@ -27,6 +28,7 @@ export default function ContactForm(){
               type="email" 
               name="email"
               className="rounded-full text-[14px] py-3 px-5 border border-solid border-[#E0E0E0] w-full focus:outline-none"
+              placeholder="Email *"
               required
           />
           <ValidationError 
@@ -35,8 +37,10 @@ export default function ContactForm(){
               errors={state.errors}
           />
           <textarea
-              id="message"
-              name="message"
+                id="message"
+                name="message"
+                className="rounded-[20px] h-[120px] text-[14px] py-3 px-5 border border-solid border-[#E0E0E0] w-full focus:outline-none resize-none"
+                placeholder="Votre message..."
           />
           <ValidationError 
           prefix="Message" 
@@ -48,7 +52,7 @@ export default function ContactForm(){
               disabled={state.submitting}
               className="bg-[#FF2727] px-6 py-3 rounded-full w-max text-white text-[14px]"
           >
-          Submit
+          Envoyer
         </button>
       </form>
     )

@@ -1,11 +1,12 @@
+import { NextRequest } from 'next/server';
 import { PrismaClient } from '@prisma/client';
 
 const prisma = new PrismaClient();
 
-export async function GET(req: Request, { params }: { params: { id: number } }) {
+export async function GET(req: NextRequest, { params }: { params: { id: string } }) {
     try {
         const product = await prisma.product.findUnique({
-            where: { id: Number(params.id) }, // Convertir l'ID en nombre
+            where: { id: Number(params.id) }, // Convert the ID to a number
         });
 
         if (!product) {

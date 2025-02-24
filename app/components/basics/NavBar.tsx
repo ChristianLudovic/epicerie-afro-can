@@ -10,7 +10,7 @@ export default function NavBar() {
     };
 
     // Numéro de téléphone au format international (sans espaces ni caractères spéciaux)
-    const whatsappNumber = "+237651827194";
+    const whatsappNumber = "+1(438)545-7862";
     const whatsappUrl = `https://wa.me/${whatsappNumber}`;
 
     return (
@@ -33,7 +33,7 @@ export default function NavBar() {
                         className="flex items-center justify-center py-[14px] px-3 bg-[#FEECEB] rounded-full block"
                     >
                         <span className="px-[9px] py-1 bg-[#FF2727] rounded-full text-white text-[11px] font-medium">
-                            +237 651827194
+                            +1 (438) 545-7862
                         </span>
                     </Link>
                 </div>

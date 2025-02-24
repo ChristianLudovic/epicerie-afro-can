@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import CategoryBadge from "./basics/CategoryBadge";
 import ProductCard from "./basics/ProductCard";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
 type Product = {
     id: string;
@@ -17,7 +17,7 @@ type CategoryCount = {
     [key: string]: number;
 };
 
-export default function ProductOverview() {
+export default function ProductOverview({ searchTerm }: { searchTerm: string }) {
     const [products, setProducts] = useState<Product[]>([]);
     const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
     const [loading, setLoading] = useState(true);
@@ -25,6 +25,8 @@ export default function ProductOverview() {
     const [categoryCount, setCategoryCount] = useState<CategoryCount>({});
 
     const route = useRouter();
+    const pathname = usePathname();
+    const isAllProductsPage = pathname === '/all-products';
 
     useEffect(() => {
         async function fetchProducts() {
@@ -64,22 +66,63 @@ export default function ProductOverview() {
         }
     };
 
+    useEffect(() => {
+        let filtered = products;
+    
+        if (searchTerm) {
+            filtered = filtered.filter(product =>
+                product.productName.toLowerCase().startsWith(searchTerm.toLowerCase())
+            );
+        }
+    
+        if (selectedCategory) {
+            filtered = filtered.filter(product => product.category === selectedCategory);
+        }
+    
+        setFilteredProducts(filtered);
+    }, [searchTerm, selectedCategory, products]);
+    
+    const handleAllProductsClick = () => {
+        setSelectedCategory(null);
+        setFilteredProducts(products);
+    };
+
     const goToAllProductPage = () => {
         route.push("/all-products");
     };
 
+    const goToProductPage = (slug: string) => {
+        route.push(`/product/${slug}`);
+    };
+
     if (loading) {
-        return <div>Chargement...</div>;
+        return (
+            <div className="px-4">
+                <div className="max-w-[1298px] w-full mx-auto mt-[100px] space-y-[52px]">Chargement...</div>
+            </div>
+        );
     }
 
     return (
         <section className="px-4">
             <div className="max-w-[1298px] w-full mx-auto mt-[100px] space-y-[52px]">
-                <div className="space-y-7">
-                    <h2 className="max-w-[600px] text-[38px] font-bold text-[#3D4C5E] leading-[110%] tracking-[-3%]">
-                        Des produits et des aliments de qualité
-                    </h2>
-                    <div className="flex items-center space-x-4">
+                <div className={`${pathname === '/' ? 'space-y-7' : "" }`}>
+                    {
+                        pathname === '/' && (
+                            <h2 className="max-w-[600px] text-[38px] font-bold text-[#3D4C5E] leading-[110%] tracking-[-3%]">
+                                Des produits et des aliments de qualité
+                            </h2>
+                        )
+                    }
+                    <div className="flex items-center space-x-4 flex-wrap">
+                        {isAllProductsPage && (
+                            <CategoryBadge 
+                                tagName="🛒 Tous les produits" 
+                                categoryQuantity={products.length}
+                                isSelected={selectedCategory === null}
+                                onClick={handleAllProductsClick}
+                            />
+                        )}
                         <CategoryBadge 
                             tagName="🥗 Legumes" 
                             categoryQuantity={categoryCount['legumes'] || 0}
@@ -98,28 +141,56 @@ export default function ProductOverview() {
                             isSelected={selectedCategory === 'viandes'}
                             onClick={() => handleCategoryClick('viandes')}
                         />
+                        <CategoryBadge 
+                            tagName="🍖 Poissons" 
+                            categoryQuantity={categoryCount['poissons'] || 0}
+                            isSelected={selectedCategory === 'poissons'}
+                            onClick={() => handleCategoryClick('poissons')}
+                        />
+                        {
+                            pathname === '/all-products' && (
+                                <CategoryBadge 
+                                    tagName="🍖 Special" 
+                                    categoryQuantity={categoryCount['special'] || 0}
+                                    isSelected={selectedCategory === 'special'}
+                                    onClick={() => handleCategoryClick('special')}
+                                />
+                            )   
+                        }
+                        
                     </div>
                 </div>
                 <div className="space-y-[50px]">
-                    <div className="grid grid-cols-4 gap-x-[39.33px] gap-y-[39.33px]">
-                        {filteredProducts.map((product) => (
-                            <ProductCard
-                                key={product.id}
-                                productName={product.productName}
-                                productDescription={product.productDescription}
-                                productImagePath={product.productImagePath}
-                                avaibility={product.avaibility}
-                            />
-                        ))}
+                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-[39.33px] gap-y-[39.33px]">
+                        {filteredProducts.length > 0 ? (
+                            filteredProducts.map((product) => (
+                                <ProductCard
+                                    key={product.id}
+                                    productName={product.productName}
+                                    productDescription={product.productDescription}
+                                    productImagePath={product.productImagePath}
+                                    avaibility={product.avaibility}
+                                    onClick={() => goToProductPage(product.id)}
+                                />
+                            ))
+                        ) : (
+                            <div className="col-span-full text-center py-12">
+                                <p className="text-gray-500">Aucun produit trouvé pour cette catégorie</p>
+                            </div>
+                        )}
                     </div>
-                    <div className="w-full flex items-center justify-center">
-                        <button 
-                            className="bg-[#FF2727] px-6 py-3 rounded-full w-max text-white text-[14px] hover:bg-[#e62323] transition-colors"
-                            onClick={goToAllProductPage}
-                        >
-                            Voir tous les aliments
-                        </button>
-                    </div>
+                    {
+                        pathname === "/" && (
+                            <div className="w-full flex items-center justify-center">
+                                <button 
+                                    className="bg-[#FF2727] px-6 py-3 rounded-full w-max text-white text-[14px] hover:bg-[#e62323] transition-colors"
+                                    onClick={goToAllProductPage}
+                                >
+                                    Voir tous les aliments
+                                </button>
+                            </div>
+                        )
+                    }
                 </div>
             </div>
         </section>

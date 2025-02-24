@@ -12,15 +12,13 @@ export default function FAQs(){
                 <div className="max-w-[448px] w-full">
                     <div className="space-y-[20px]">
                         <h2 className="text-[42px] font-bold text-[#3D4C5E] leading-[110%] tracking-[-3%]">Questions fréquemment posées</h2>
-                        <p className="text-[14px] leading-[150%]">Tout ce que vous devez savoir sur le produit et le magasin.  Vous ne trouvez pas la réponse que vous cherchez ? Envoyez-nous un message dans la section « Contactez-nous ».</p>
+                        <p className="text-[16px] leading-[150%]">Tout ce que vous devez savoir sur le produit et le magasin.  Vous ne trouvez pas la réponse que vous cherchez ? Envoyez-nous un message dans la section « Contactez-nous ».</p>
                     </div>
                 </div>
                 <div className="max-w-[768px] w-full space-y-4">
-                    <AccordionCard question="Les produits sont-ils frais?" answer="Le concombre Hollandais est un concombre français, le concombre Anglais est un concombre allemand. Le concombre est un plat de cuisine allemande, qui est souvent servi avec de la viande, des légumes et des légumes."/>
-                    <AccordionCard question="Quelles sont les heures d’ouverture et de fermeture du magasin?" answer="Le magasin est ouvert tous les jours de la semaine entre 8h-20h et le dimanche entre 8h-18h"/>
-                    <AccordionCard question="Le magasin est situé où?" answer="Le concombre Hollandais est un concombre français, le concombre Anglais est un concombre allemand. Le concombre est un plat de cuisine allemande, qui est souvent servi avec de la viande, des légumes et des légumes."/>
-                    <AccordionCard question="Vos produits sont-ils des produits locaux ou importés?" answer="Le concombre Hollandais est un concombre français, le concombre Anglais est un concombre allemand. Le concombre est un plat de cuisine allemande, qui est souvent servi avec de la viande, des légumes et des légumes."/>
-                    <AccordionCard question="Faites vous des livraisons?" answer="Le concombre Hollandais est un concombre français, le concombre Anglais est un concombre allemand. Le concombre est un plat de cuisine allemande, qui est souvent servi avec de la viande, des légumes et des légumes."/>
+                    <AccordionCard question="Quelles sont les heures d’ouverture et de fermeture du magasin?" answer="Le magasin est accessible chaque jour de la semaine de 8h à 18h, et le week-end entre 9h à 17h."/>
+                    <AccordionCard question="D'où proviennent vos produits ?" answer="Nos produits proviennent principalement d'Amérique, d'Afrique, d'Haïti, et d'autres régions du monde, afin de vous offrir une diversité de choix et de saveurs authentiques."/>
+                    <AccordionCard question="Offrez-vous un service de livraison ?" answer="Le service de livraison sera implémenté sous peu."/>
                 </div>
             </div>
         </section>

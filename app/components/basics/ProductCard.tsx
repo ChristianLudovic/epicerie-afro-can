@@ -6,16 +6,21 @@ interface ProductCardProps {
     productDescription: string;
     productImagePath: string;
     avaibility: string;
+    onClick?: () => void;
 }
 
 export default function ProductCard({
     productName,
     productDescription,
     productImagePath,
-    avaibility
+    avaibility,
+    onClick
 }: ProductCardProps) {
     return (
-        <div className="border-[0.55px] border-solid border-[#EBEBEB] rounded-[16px] max-w-[295px] w-full space-y-2 p-[10px]">
+        <div 
+            className="border-[0.55px] border-solid border-[#EBEBEB] rounded-[16px] max-w-[295px] w-full space-y-2 p-[10px] cursor-pointer"
+            onClick={onClick}
+        >
             <Image
                 className="rounded-[18px] max-w-[273px] w-full h-[261px] object-cover"
                 src={productImagePath} 

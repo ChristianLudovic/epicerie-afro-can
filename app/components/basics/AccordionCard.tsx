@@ -16,7 +16,7 @@ export default function AccordionCard({ question, answer }: AccordionCardProps) 
     return (
         <div className={`transition-colors duration-300 rounded-[16px] p-8 ${isOpen ? 'bg-[#E7F9F4]' : 'bg-transparent'}`}>
             <div className="flex items-center justify-between cursor-pointer" onClick={toggleAccordion}>
-                <h3 className="text-[16px] leading-[110%] font-semibold">{question}</h3>
+                <h3 className="text-[18px] leading-[110%] font-semibold">{question}</h3>
                 {isOpen ? (
                     <svg 
                         className="transition-transform duration-300" 
@@ -58,7 +58,7 @@ export default function AccordionCard({ question, answer }: AccordionCardProps) 
                     isOpen ? 'max-h-96 opacity-100 mt-[7px]' : 'max-h-0 opacity-0'
                 }`}
             >
-                <div className="text-[14px] leading-[150%]">{answer}</div>
+                <div className="text-[16px] leading-[150%]">{answer}</div>
             </div>
         </div>
     );

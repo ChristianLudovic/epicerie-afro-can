@@ -8,6 +8,7 @@ import ProductOverview from "./components/ProductsOverview";
 import NavBar from "./components/basics/NavBar";
 import { ScrollContext } from "./contexts/scrollContext";
 import ClientsReview from "./components/ClientsReview";
+import SpecialProductsPopup from "./components/basics/SpecialProductsPopup";
 
 export default function Home() {
 
@@ -21,6 +22,7 @@ export default function Home() {
     }}>
       <NavBar />
       <Header />
+      <SpecialProductsPopup />
       <ProductOverview />
       <FAQs />
       <ClientsReview />

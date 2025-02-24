@@ -56,7 +56,7 @@ export default function ReviewForm({ onReviewSubmitted }: ReviewFormProps) {
                 <h2 className="text-[#FF2727] text-[22px] leading-[130%] font-semibold">
                     Laisser un avis sur le magasin
                 </h2>
-                <p className="text-[14px] leading-[140%]">
+                <p className="text-[16px] leading-[150%]">
                     Vous pouvez laisser vos impressions sur ce produit dans le respect et la bienveillance.
                 </p>
             </div>

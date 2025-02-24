@@ -30,14 +30,14 @@ export default function ClientsReview() {
         fetchReviews();
     }, []);
 
-    const formatDate = (dateString: string): string => {
+    /*const formatDate = (dateString: string): string => {
         const date = new Date(dateString);
         return date.toLocaleDateString('fr-FR', {
             day: 'numeric',
             month: 'long',
             year: 'numeric'
         });
-    };
+    };*/
 
     return (
         <section className="px-4">
@@ -59,7 +59,6 @@ export default function ClientsReview() {
                                     key={review.id}
                                     name={review.name} 
                                     message={review.message}
-                                    date={formatDate(review.createdAt)}
                                 />
                             ))
                         )}

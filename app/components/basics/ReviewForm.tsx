@@ -11,7 +11,16 @@ export default function ReviewForm({ onReviewSubmitted }: ReviewFormProps) {
     const [success, setSuccess] = useState(false);
     const [error, setError] = useState('');
 
-    const handleSubmit = async (e) => {
+    interface ReviewData {
+        name: string;
+        message: string;
+    }
+
+    interface ErrorResponse {
+        error: string;
+    }
+
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         setIsSubmitting(true);
         setError('');
@@ -22,7 +31,7 @@ export default function ReviewForm({ onReviewSubmitted }: ReviewFormProps) {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ name, message }),
+                body: JSON.stringify({ name, message } as ReviewData),
             });
             
             if (response.ok) {
@@ -36,7 +45,7 @@ export default function ReviewForm({ onReviewSubmitted }: ReviewFormProps) {
                     setSuccess(false);
                 }, 5000);
             } else {
-                const errorData = await response.json();
+                const errorData: ErrorResponse = await response.json();
                 setError(errorData.error || 'Erreur lors de l\'envoi de la review');
             }
         } catch (error) {

@@ -32,6 +32,7 @@ export default function ProductPage() {
                 const data = await res.json();
                 setProduct(data);
             } catch (err) {
+                console.error("Erreur lors de la récupération du produit:", err);
                 setError("Erreur lors de la récupération du produit");
             } finally {
                 setLoading(false);

@@ -1,11 +1,13 @@
-import { useState, useEffect } from 'react';
 
-const SearchBar = ({ searchTerm, onSearch }) => {
-    const handleChange = (e) => {
-        const value = e.target.value;
-        onSearch(value); // Appeler la fonction onSearch pour mettre à jour la valeur
+interface SearchBarProps {
+    searchTerm: string;
+    onSearch: (value: string) => void;
+}
+
+const SearchBar: React.FC<SearchBarProps> = ({ searchTerm, onSearch }) => {
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        onSearch(e.target.value);
     };
-
     return (
         <div className="max-w-[427px] w-full mx-auto flex items-center justify-between bg-white rounded-full py-2 pl-6 pr-2">
             <label htmlFor="search" className="flex items-center space-x-2">

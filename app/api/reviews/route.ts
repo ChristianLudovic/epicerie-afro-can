@@ -3,7 +3,7 @@ import { PrismaClient } from '@prisma/client';
 
 const prisma = new PrismaClient();
 
-export async function GET(request: NextRequest) {
+export async function GET() {
   try {
     const reviews = await prisma.review.findMany({
       orderBy: {
@@ -13,6 +13,7 @@ export async function GET(request: NextRequest) {
     
     return NextResponse.json(reviews);
   } catch (error) {
+    console.error('Erreur lors de la récupération des reviews:', error);
     return NextResponse.json(
       { error: 'Erreur lors de la récupération des reviews' },
       { status: 500 }
@@ -23,7 +24,7 @@ export async function GET(request: NextRequest) {
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    const { name, message, rating = 5 } = body;
+    const { name, message} = body;
     
     const review = await prisma.review.create({
       data: {

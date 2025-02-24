@@ -2,7 +2,7 @@ import { PrismaClient } from '@prisma/client';
 
 const prisma = new PrismaClient();
 
-export async function GET(req: Request, { params }: { params: { id: string } }) {
+export async function GET(req: Request, { params }: { params: { id: number } }) {
     try {
         const product = await prisma.product.findUnique({
             where: { id: Number(params.id) }, // Convertir l'ID en nombre

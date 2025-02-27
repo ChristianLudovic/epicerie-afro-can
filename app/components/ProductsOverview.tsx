@@ -27,6 +27,7 @@ export default function ProductOverview({ searchTerm }: { searchTerm: string }) 
     const route = useRouter();
     const pathname = usePathname();
     const isAllProductsPage = pathname === '/all-products';
+    const isHomePage = pathname === '/';
 
     useEffect(() => {
         async function fetchProducts() {
@@ -37,9 +38,12 @@ export default function ProductOverview({ searchTerm }: { searchTerm: string }) 
                 }
                 const data = await response.json();
                 setProducts(data);
-                setFilteredProducts(data);
                 
-                // Calculer le nombre de produits par catégorie
+                // Apply initial filtering based on the page
+                const initialFiltered = isHomePage ? data.slice(0, 30) : data;
+                setFilteredProducts(initialFiltered);
+                
+                // Calculate category counts
                 const counts = data.reduce((acc: CategoryCount, product: Product) => {
                     acc[product.category] = (acc[product.category] || 0) + 1;
                     return acc;
@@ -52,17 +56,17 @@ export default function ProductOverview({ searchTerm }: { searchTerm: string }) 
             }
         }
         fetchProducts();
-    }, []);
+    }, [isHomePage]);
 
     const handleCategoryClick = (category: string) => {
         if (selectedCategory === category) {
-            // Si on clique sur la catégorie déjà sélectionnée, on réinitialise
             setSelectedCategory(null);
-            setFilteredProducts(products);
+            const resetProducts = isHomePage ? products.slice(0, 30) : products;
+            setFilteredProducts(resetProducts);
         } else {
-            // Sinon, on filtre les produits par la nouvelle catégorie
             setSelectedCategory(category);
-            setFilteredProducts(products.filter(product => product.category === category));
+            const filtered = products.filter(product => product.category === category);
+            setFilteredProducts(isHomePage ? filtered.slice(0, 30) : filtered);
         }
     };
 
@@ -79,12 +83,18 @@ export default function ProductOverview({ searchTerm }: { searchTerm: string }) 
             filtered = filtered.filter(product => product.category === selectedCategory);
         }
     
+        // Apply the 30 product limit on homepage after all other filters
+        if (isHomePage) {
+            filtered = filtered.slice(0, 32);
+        }
+    
         setFilteredProducts(filtered);
-    }, [searchTerm, selectedCategory, products]);
+    }, [searchTerm, selectedCategory, products, isHomePage]);
     
     const handleAllProductsClick = () => {
         setSelectedCategory(null);
-        setFilteredProducts(products);
+        const resetProducts = isHomePage ? products.slice(0, 30) : products;
+        setFilteredProducts(resetProducts);
     };
 
     const goToAllProductPage = () => {
@@ -106,15 +116,13 @@ export default function ProductOverview({ searchTerm }: { searchTerm: string }) 
     return (
         <section className="px-4">
             <div className="max-w-[1298px] w-full mx-auto mt-[100px] space-y-[52px]">
-                <div className={`${pathname === '/' ? 'space-y-7' : "" }`}>
-                    {
-                        pathname === '/' && (
-                            <h2 className="max-w-[600px] text-[38px] font-bold text-[#3D4C5E] leading-[110%] tracking-[-3%]">
-                                Des produits et des aliments de qualité
-                            </h2>
-                        )
-                    }
-                    <div className="flex items-center space-x-4 flex-wrap">
+                <div className={`${isHomePage ? 'space-y-7' : "" }`}>
+                    {isHomePage && (
+                        <h2 className="max-w-[600px] text-[38px] font-bold text-[#3D4C5E] leading-[110%] tracking-[-3%]">
+                            Des produits et des aliments de qualité
+                        </h2>
+                    )}
+                    <div className="flex items-center flex-wrap gap-4">
                         {isAllProductsPage && (
                             <CategoryBadge 
                                 tagName="🛒 Tous les produits" 
@@ -124,7 +132,7 @@ export default function ProductOverview({ searchTerm }: { searchTerm: string }) 
                             />
                         )}
                         <CategoryBadge 
-                            tagName="🥗 Legumes" 
+                            tagName="🥒 Legumes" 
                             categoryQuantity={categoryCount['legumes'] || 0}
                             isSelected={selectedCategory === 'legumes'}
                             onClick={() => handleCategoryClick('legumes')}
@@ -142,22 +150,41 @@ export default function ProductOverview({ searchTerm }: { searchTerm: string }) 
                             onClick={() => handleCategoryClick('viandes')}
                         />
                         <CategoryBadge 
-                            tagName="🍖 Poissons" 
+                            tagName="🐟 Poissons" 
                             categoryQuantity={categoryCount['poissons'] || 0}
                             isSelected={selectedCategory === 'poissons'}
                             onClick={() => handleCategoryClick('poissons')}
                         />
-                        {
-                            pathname === '/all-products' && (
-                                <CategoryBadge 
-                                    tagName="🍖 Special" 
-                                    categoryQuantity={categoryCount['special'] || 0}
-                                    isSelected={selectedCategory === 'special'}
-                                    onClick={() => handleCategoryClick('special')}
-                                />
-                            )   
-                        }
-                        
+                        <CategoryBadge 
+                            tagName="🎉 Special" 
+                            categoryQuantity={categoryCount['special'] || 0}
+                            isSelected={selectedCategory === 'special'}
+                            onClick={() => handleCategoryClick('special')}
+                        />
+                        <CategoryBadge 
+                            tagName="🥐 Pain économique et pâtisserie" 
+                            categoryQuantity={categoryCount['pain-economique-patisserie'] || 0}
+                            isSelected={selectedCategory === 'pain-economique-patisserie'}
+                            onClick={() => handleCategoryClick('pain-economique-patisserie')}
+                        />
+                        <CategoryBadge 
+                            tagName="🫕 Epicerie sec" 
+                            categoryQuantity={categoryCount['epicerie sec'] || 0}
+                            isSelected={selectedCategory === 'epicerie sec'}
+                            onClick={() => handleCategoryClick('epicerie sec')}
+                        />
+                        <CategoryBadge 
+                            tagName="🫕 Epicerie frais" 
+                            categoryQuantity={categoryCount['epicerie frais'] || 0}
+                            isSelected={selectedCategory === 'epicerie frais'}
+                            onClick={() => handleCategoryClick('epicerie frais')}
+                        />
+                        <CategoryBadge 
+                            tagName="🫕 Divers" 
+                            categoryQuantity={categoryCount['divers'] || 0}
+                            isSelected={selectedCategory === 'divers'}
+                            onClick={() => handleCategoryClick('divers')}
+                        />
                     </div>
                 </div>
                 <div className="space-y-[50px]">
@@ -179,18 +206,16 @@ export default function ProductOverview({ searchTerm }: { searchTerm: string }) 
                             </div>
                         )}
                     </div>
-                    {
-                        pathname === "/" && (
-                            <div className="w-full flex items-center justify-center">
-                                <button 
-                                    className="bg-[#FF2727] px-6 py-3 rounded-full w-max text-white text-[14px] hover:bg-[#e62323] transition-colors"
-                                    onClick={goToAllProductPage}
-                                >
-                                    Voir tous les aliments
-                                </button>
-                            </div>
-                        )
-                    }
+                    {isHomePage && (
+                        <div className="w-full flex items-center justify-center">
+                            <button 
+                                className="bg-[#FF2727] px-6 py-3 rounded-full w-max text-white text-[14px] hover:bg-[#e62323] transition-colors"
+                                onClick={goToAllProductPage}
+                            >
+                                Voir tous les aliments
+                            </button>
+                        </div>
+                    )}
                 </div>
             </div>
         </section>

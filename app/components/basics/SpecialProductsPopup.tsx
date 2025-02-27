@@ -56,7 +56,7 @@ export default function SpecialProductsPopup() {
           ×
         </button>
         
-        <h2 className="text-2xl font-bold mb-4 text-gray-800">Produits Spéciaux</h2>
+        <h2 className="text-2xl font-bold mb-4 text-gray-800">En special ce jour</h2>
         
         <div className="space-y-4">
           {products.map(product => (

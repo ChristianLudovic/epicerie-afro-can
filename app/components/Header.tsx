@@ -7,10 +7,10 @@ import image0003 from "@/public/0003.svg"
 export default function Header(){
     return(
         <section className="px-4">
-            <div className="max-w-[1298px] w-full mx-auto flex items-start justify-between mt-[28px]">
-                <div className="max-w-[555px] w-full flex flex-col md:h-[542px] justify-between">
+            <div className="max-w-[1298px] w-full mx-auto md:flex md:items-start md:justify-between mt-[28px] max-md:space-y-[41px]">
+                <div className="max-w-[555px] w-full flex flex-col md:h-[542px] justify-between ">
                     <div className="space-y-[41px]">
-                        <h1 className="text-[52px] font-bold leading-[110%] tracking-[-3%] text-[#3D4C5E]">Bienvenu à l&apos;<span className="text-[#0CE377]">épicerie</span> <span className="text-[#FF2727]">Afro-Can</span>, votre marché de proximité pour vous servir</h1>
+                        <h1 className="text-[52px] font-bold leading-[110%] tracking-[-3%] text-[#3D4C5E] max-sm:text-[28px]">Bienvenu à l&apos;<span className="text-[#0CE377]">épicerie</span> <span className="text-[#FF2727]">Afro-Can</span>, votre marché de proximité pour vous servir</h1>
                         <p className="md:text-[16px] leading-[150%] max-w-[340px]">Nous avons tout ce dont vous avez besoin pour faire des repas délicieux et de qualités à des prix imbattables</p>
                     </div>
                     <div className="flex items-center justify-between">

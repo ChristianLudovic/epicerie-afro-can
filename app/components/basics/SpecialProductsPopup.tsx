@@ -49,14 +49,16 @@ export default function SpecialProductsPopup() {
         className="bg-white rounded-lg p-6 max-w-md w-11/12 max-h-[80vh] overflow-y-auto relative"
         onClick={(e) => e.stopPropagation()}
       >
-        <button 
-          className="absolute top-3 right-3 text-gray-500 hover:text-gray-800 text-2xl"
-          onClick={() => setIsOpen(false)}
-        >
-          ×
-        </button>
+        <div className='flex items-start justify-between'>
+          <h2 className="text-2xl font-bold mb-4 text-gray-800 leading-[110%]">En special ce jour</h2>
+          <button 
+            className=" text-gray-500 hover:text-gray-800 text-2xl"
+            onClick={() => setIsOpen(false)}
+          >
+            x
+          </button>
+        </div>
         
-        <h2 className="text-2xl font-bold mb-4 text-gray-800">En special ce jour</h2>
         
         <div className="space-y-4">
           {products.map(product => (

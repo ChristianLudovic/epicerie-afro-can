@@ -7,10 +7,10 @@ export default function ContactSection(){
     const { contactUsRef } = useScrollContext();
     return(
         <section ref={contactUsRef} className="px-4">
-            <div  className="max-w-[1298px] w-full mx-auto flex items-start justify-between mt-[100px] pt-[30px]">
-                <div className="max-w-[448px] w-full space-y-[40px]">
+            <div  className="max-w-[1298px] w-full mx-auto xl:flex xl:items-start xl:justify-between mt-[100px] max-sm:mt-[40px] pt-[30px] max-xl:space-y-[30px]">
+                <div className="xl:max-w-[448px] w-full space-y-[40px]">
                     <div className="space-y-[20px]">
-                        <h2 className="text-[42px] font-bold text-[#3D4C5E] leading-[110%] tracking-[-3%]">Contactez-nous</h2>
+                        <h2 className="text-[42px] max-sm:text-[28px] font-bold text-[#3D4C5E] leading-[110%] tracking-[-3%]">Contactez-nous</h2>
                         <p className="text-[16px] leading-[150%]">Pour nous aider a ameliorer la qualite de nos service et toujours etre a la hauteur de vos attentes laissez nous un message ici</p>
                     </div>
                     <ContactForm />

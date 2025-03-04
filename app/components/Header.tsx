@@ -1,20 +1,28 @@
 import Image from "next/image"
-import image0001 from "@/public/0001.svg"
-import image0002 from "@/public/0002.svg"
-import image0003 from "@/public/0003.svg"
+import image0001 from "@/public/0001.jpg"
+import image0002 from "@/public/0002.jpg"
+import image0003 from "@/public/0003.jpg"
+import { useScrollContext } from "../contexts/scrollContext";
 
 
 export default function Header(){
+
+    const refs = useScrollContext();
+    
+    const scrollToSection = (refKey: keyof typeof refs) => {
+        refs[refKey]?.current?.scrollIntoView({ behavior: 'smooth' });
+    };
+
     return(
         <section className="px-4">
             <div className="max-w-[1298px] w-full mx-auto md:flex md:items-start md:justify-between mt-[28px] max-md:space-y-[41px]">
-                <div className="max-w-[555px] w-full flex flex-col md:h-[542px] justify-between ">
-                    <div className="space-y-[41px]">
-                        <h1 className="text-[52px] font-bold leading-[110%] tracking-[-3%] text-[#3D4C5E] max-sm:text-[28px]">Bienvenu à l&apos;<span className="text-[#0CE377]">épicerie</span> <span className="text-[#FF2727]">Afro-Can</span>, votre marché de proximité pour vous servir</h1>
-                        <p className="md:text-[16px] leading-[150%] max-w-[340px]">Nous avons tout ce dont vous avez besoin pour faire des repas délicieux et de qualités à des prix imbattables</p>
+                <div className="max-w-[555px] w-full flex flex-col justify-between xl:h-[549px] max-xl:h-[426px] max-[885px]:space-y-5 max-sm:h-max">
+                    <div className="space-y-[32px] max-sm:space-y-[20px]">
+                        <h1 className="text-[52px] max-xl:text-[40px] font-bold leading-[110%] tracking-[-3%] text-[#3D4C5E] max-sm:text-[28px] ">Bienvenu à l&apos;<span className="text-[#0CE377]">épicerie</span> <span className="text-[#FF2727]">Afro-Can</span>, votre marché de proximité pour vous servir</h1>
+                        <p className="md:text-[16px] leading-[150%] max-w-[340px] max-sm:text-[16px]">Nous avons tout ce dont vous avez besoin pour faire des repas délicieux et de qualités à des prix imbattables</p>
                     </div>
-                    <div className="flex items-center justify-between">
-                        <div className="space-y-[6px] ">
+                    <div className="xl:flex xl:items-center xl:justify-between max-xl:space-y-4">
+                        <div onClick={() => scrollToSection('contactUsRef')} className="space-y-[6px] cursor-pointer">
                             <div className="flex items-center space-x-1">
                                 <svg className ="vuesax-bulk-location" width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path opacity="0.4" d="M20.62 8.66094C19.57 4.04094 15.54 1.96094 12 1.96094C12 1.96094 12 1.96094 11.99 1.96094C8.46 1.96094 4.42 4.03094 3.37 8.65094C2.2 13.8109 5.36 18.1809 8.22 20.9309C9.28 21.9509 10.64 22.4609 12 22.4609C13.36 22.4609 14.72 21.9509 15.77 20.9309C18.63 18.1809 21.79 13.8209 20.62 8.66094Z" fill="#3D4C5E" />
@@ -24,7 +32,7 @@ export default function Header(){
                             </div>
                             <p className="leading-[130%] text-[14px] text-[#3D4C5E]">2948 Ch de Chambly, Longueuil, QC J4L 1N2</p>
                         </div>
-                        <div className="w-[0.7px] bg-[#C4C2C2] h-[30px]"></div>
+                        <div className="w-[0.7px] bg-[#C4C2C2] h-[30px] max-xl:hidden"></div>
                         <div className="space-y-[6px] ">
                             <div className="flex items-center space-x-1">
                                 <svg className="vuesax-bulk-call2" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -38,9 +46,9 @@ export default function Header(){
                     </div>
                 </div>
                 <div className="max-w-[670px] w-full grid grid-cols-3 gap-4">
-                    <Image src={image0001} alt="" className="col-span-3 max-w-[670px] w-full h-[310px] rounded-[32px] object-cover" />
-                    <Image src={image0002} alt="" className="col-span-2 max-w-[670px] w-full h-[216px] rounded-[32px] object-cover" />
-                    <Image src={image0003} alt="" className="col-span-1 max-w-[670px] w-full h-[216px] rounded-[32px] object-cover" />
+                    <Image src={image0001} alt="" className="col-span-3 max-w-[670px] w-full h-[310px] rounded-[32px] object-cover max-xl:h-[250px] max-xl:rounded-[24px]" />
+                    <Image src={image0002} alt="" className="col-span-2 max-w-[670px] w-full h-[216px] rounded-[32px] object-cover max-xl:h-[140px] max-xl:rounded-[24px]" />
+                    <Image src={image0003} alt="" className="col-span-1 max-w-[670px] w-full h-[216px] rounded-[32px] object-cover max-xl:h-[140px] max-xl:rounded-[24px]" />
                 </div>
             </div>
         </section>

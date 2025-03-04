@@ -41,9 +41,9 @@ export default function ClientsReview() {
 
     return (
         <section className="px-4">
-            <div className="max-w-[1298px] w-full mx-auto flex flex-col md:flex-row items-start justify-between mt-[90px] pt-[30px] gap-8">
+            <div className="max-w-[1298px] w-full mx-auto flex flex-col md:flex-row items-start justify-between mt-[90px] max-sm:mt-[40px] pt-[30px] gap-8">
                 <div className="max-w-[619px] w-full space-y-[40px]">
-                    <h2 className="text-[42px] font-bold text-[#3D4C5E] leading-[110%] tracking-[-3%] max-w-[448px]">
+                    <h2 className="text-[42px] max-sm:text-[28px] font-bold text-[#3D4C5E] leading-[110%] tracking-[-3%] max-w-[448px]">
                         Avis clients sur le magasin
                     </h2>
                     <div className="space-y-[30px]">

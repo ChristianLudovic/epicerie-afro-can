@@ -115,14 +115,14 @@ export default function ProductOverview({ searchTerm }: { searchTerm: string }) 
 
     return (
         <section className="px-4">
-            <div className="max-w-[1298px] w-full mx-auto mt-[100px] space-y-[52px]">
+            <div className="max-w-[1298px] w-full mx-auto mt-[100px] max-sm:mt-[60px] space-y-[52px]">
                 <div className={`${isHomePage ? 'space-y-7' : "" }`}>
                     {isHomePage && (
-                        <h2 className="max-w-[600px] text-[38px] font-bold text-[#3D4C5E] leading-[110%] tracking-[-3%]">
+                        <h2 className="max-w-[600px] text-[38px] max-sm:text-[28px] font-bold text-[#3D4C5E] leading-[110%] tracking-[-3%]">
                             Des produits et des aliments de qualité
                         </h2>
                     )}
-                    <div className="flex items-center flex-wrap gap-4">
+                    <div className="flex items-center sm:flex-wrap gap-4 overflow-x-auto">
                         {isAllProductsPage && (
                             <CategoryBadge 
                                 tagName="🛒 Tous les produits" 
@@ -188,7 +188,7 @@ export default function ProductOverview({ searchTerm }: { searchTerm: string }) 
                     </div>
                 </div>
                 <div className="space-y-[50px]">
-                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-[39.33px] gap-y-[39.33px]">
+                    <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-[39.33px] gap-y-[39.33px] max-sm:gap-[12px]">
                         {filteredProducts.length > 0 ? (
                             filteredProducts.map((product) => (
                                 <ProductCard

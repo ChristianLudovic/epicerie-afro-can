@@ -45,7 +45,7 @@ export default function ProductPage() {
     const faqRef = useRef<HTMLElement>(null);
     const contactUsRef = useRef<HTMLElement>(null);
 
-    if (loading) return <p className="text-center text-gray-500">Chargement...</p>;
+    if (loading) return (<div className="h-screen flex items-center justify-center"><p className="text-center text-gray-500">Chargement...</p></div>);
     if (error) return <p className="text-center text-red-500">{error}</p>;
 
     return (
@@ -64,11 +64,11 @@ export default function ProductPage() {
                         <span>Retour à la page précédente</span>
                     </button>
                 </div>
-                <div className="max-w-[1297px] mx-auto w-full mb-[100px] flex items-start justify-between">
+                <div className="max-w-[1297px] mx-auto w-full mb-[100px] flex items-start justify-between max-md:flex-col max-md:space-y-[45px]">
                     <Image 
                         src={product?.productImagePath || "/default-image.jpg"} 
                         alt={product?.productName || "Produit"}
-                        className="rounded-[18px] max-w-[611px] w-full h-[557px] object-cover"
+                        className="rounded-[18px] max-w-[611px] w-full h-[557px] object-cover max-sm:h-[350px]"
                         width={611} 
                         height={557} 
                     />

@@ -20,16 +20,10 @@ const SearchBar: React.FC<SearchBarProps> = ({ searchTerm, onSearch }) => {
                     name="search"
                     onChange={handleChange}
                     placeholder="Rechercher un aliment"
-                    className="flex-1 py-2 px-2 outline-none text-gray-700 placeholder-gray-500 text-[14px]"
+                    className="flex-1 py-2 px-2 outline-none text-gray-700 placeholder-gray-500 text-[16px]"
                 />
             </label>
             <div className="w-[1.2px] h-[15px] bg-gray-300"></div>
-            <button
-                type="button"
-                className="bg-red-500 hover:bg-red-600 text-white font-medium py-3 px-8 rounded-full transition-colors text-[14px]"
-            >
-                Rechercher
-            </button>
         </div>
     );
 };

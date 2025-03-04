@@ -19,11 +19,11 @@ export default function CategoryBadge({
                     ? 'bg-[#04C464] text-white' 
                     : 'bg-[#E7FCF1] text-[#04C464]'
                 } 
-                text-[15px] font-medium transition-colors hover:opacity-90`}
+                text-[15px] font-medium transition-colors hover:opacity-90 md:text-[13px] flex items-center`}
             onClick={onClick}
             {...props}
         >
-            <span>{tagName}</span>
+            <span className="w-max">{tagName}</span>
             <span>({categoryQuantity})</span>
         </button>
     );

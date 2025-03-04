@@ -27,6 +27,7 @@ export default function AllProducts() {
     return (
         <ScrollContext.Provider value={{ faqRef, contactUsRef }}>
             <NavBar />
+            <div className="px-4">
             <div className="max-w-[1297px] mx-auto w-full mt-6 mb-9">
                 <button
                     className="flex items-center space-x-[14px] text-[14px]"
@@ -40,9 +41,9 @@ export default function AllProducts() {
                 </button>
             </div>
             <div
-                className="max-w-[1297px] mx-auto w-full h-[520px] px-4 pb-[84px] flex items-end rounded-[24px]"
+                className="max-w-[1297px] mx-auto w-full h-[520px] max-sm:h-[300px] px-4 pb-[60px] flex items-end rounded-[24px]"
                 style={{
-                    backgroundImage: `url(/backgrounds/all-products-background.png)`,
+                    backgroundImage: `url(/0001.jpg)`,
                     backgroundSize: "cover",
                     backgroundPosition: "center",
                     backgroundRepeat: "no-repeat",
@@ -51,6 +52,8 @@ export default function AllProducts() {
                 {/* Passer la fonction handleSearch et searchTerm à la SearchBar */}
                 <SearchBar searchTerm={searchTerm} onSearch={handleSearch} />
             </div>
+            </div>
+            
             {/* Passer searchTerm au ProductOverview pour filtrer les produits */}
             <ProductOverview searchTerm={searchTerm} />
             <Footer />

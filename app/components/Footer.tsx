@@ -19,16 +19,16 @@ export default function Footer(){
     }
 
     return(
-        <div className="mt-[100px] pt-[50px] bg-[#3d4c5e] text-white">
+        <div className="mt-[100px] pt-[50px] bg-[#3d4c5e] text-white px-4">
             <div className="max-w-[1298px] w-full mx-auto space-y-[15px] ">
-                <div className="pb-[80px] border-b border-b-solid border-b-[#98A2B3] flex items-start justify-between">
+                <div className="pb-[80px] border-b border-b-solid border-b-[#98A2B3] flex sm:items-start sm:justify-between max-sm:flex-col max-sm:space-y-[40px]">
                     <div className="space-y-[38px]">
                         <div>
                             <Image src="/logo00.png" alt="logo EpicerieAfroCan" width={80} height={52.21} />
                         </div>
                         <p className="max-w-[260px] text-[14px]">Acheter beaucoup aux prix imbattables.</p>
                     </div>
-                    <div className="flex space-x-[50px]">
+                    <div className="flex sm:space-x-[50px] max-sm:flex-col space-y-[45px]">
                         <div className="space-y-[35px]">
                             <h3 className="font-semibold">Liens rapides</h3>
                             <Link href="/" className="block text-[14px]">Accueil</Link>
@@ -41,7 +41,7 @@ export default function Footer(){
                         </div>
                         <div className="space-y-[35px]">
                             <h3 className="font-semibold">Medias sociaux</h3>
-                            <button onClick={redirectToMail} className="block text-[14px] underline">epicerieAfrocan@gmail.com</button>
+                            <button onClick={redirectToMail} className="block text-[14px] underline">epicerieafrocan@gmail.com</button>
                             <Link href="/" className="block text-[14px]">(438) 545-7862 - (438) 527-6872</Link>
                             <div className="space-x-5 flex items-center">
                                 <button >

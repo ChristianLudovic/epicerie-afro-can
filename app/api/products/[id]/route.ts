@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from "next/server";
+/*import { NextRequest, NextResponse } from "next/server";
 import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
@@ -35,5 +35,20 @@ export async function GET(request: NextRequest, { params }: Params) {
       { error: "Erreur serveur" },
       { status: 500 }
     );
+  }
+}*/
+
+import { PrismaClient } from "@prisma/client";
+
+const prisma = new PrismaClient();
+
+export async function GET() {
+  try {
+    const test = await prisma.$queryRaw`SELECT 1+1 as result`;
+    console.log("Connexion réussie :", test);
+    return new Response(JSON.stringify({ success: true }), { status: 200 });
+  } catch (error) {
+    console.error("Erreur connexion DB :", error);
+    return new Response(JSON.stringify({ error: "Connexion impossible" }), { status: 500 });
   }
 }

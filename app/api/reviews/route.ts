@@ -13,6 +13,7 @@ export async function GET() {
     
     return NextResponse.json(reviews);
   } catch (error) {
+    console.error('Erreur complète:', error);
     return NextResponse.json(
       { error: 'Erreur lors de la récupération des reviews' },
       { status: 500 }

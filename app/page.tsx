@@ -23,7 +23,7 @@ export default function Home() {
       <NavBar />
       <Header />
       <SpecialProductsPopup />
-      <ProductOverview />
+      <ProductOverview searchTerm="" />
       <FAQs />
       <ClientsReview />
       <ContactSection />

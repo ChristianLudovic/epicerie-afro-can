@@ -21,7 +21,6 @@ export async function GET(req: Request, { params }: { params: { id: string }  })
             headers: { 'Content-Type': 'application/json' },
         });
     } catch (error) {
-        console.error('Erreur complète:', error);
         return new Response(JSON.stringify({ error: 'Erreur serveur' }), {
             status: 500,
             headers: { 'Content-Type': 'application/json' },

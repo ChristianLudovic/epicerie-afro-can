@@ -1,20 +1,12 @@
+import { NextRequest } from 'next/server';
 import { PrismaClient } from '@prisma/client';
 
 const prisma = new PrismaClient();
 
-export async function GET(req: Request, { params }: { params: { id: string } }) {
+export async function GET(req: NextRequest, { params }: { params: { id: string } }) {
     try {
-        const productId = parseInt(params.id, 10);
-
-        if (isNaN(productId)) {
-            return new Response(JSON.stringify({ error: 'ID invalide' }), {
-                status: 400,
-                headers: { 'Content-Type': 'application/json' },
-            });
-        }
-
         const product = await prisma.product.findUnique({
-            where: { id: productId },
+            where: { id: Number(params.id) }, // Convert the ID to a number
         });
 
         if (!product) {

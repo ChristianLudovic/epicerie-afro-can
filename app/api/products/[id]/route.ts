@@ -3,19 +3,21 @@ import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
 
-interface Params {
-  params: { id: string };
-}
-
-export async function GET(request: NextRequest, { params }: Params) {
+export async function GET(
+  request: NextRequest,
+  context: { params: Promise<{ id?: string }> } // params est une promesse
+) {
   try {
-    const productId = parseInt(params.id, 10);
+    const { id } = await context.params; // 🔹 On attend la promesse ici
+
+    if (!id) {
+      return NextResponse.json({ error: "ID manquant" }, { status: 400 });
+    }
+
+    const productId = parseInt(id, 10);
 
     if (isNaN(productId)) {
-      return NextResponse.json(
-        { error: "ID invalide" },
-        { status: 400 }
-      );
+      return NextResponse.json({ error: "ID invalide" }, { status: 400 });
     }
 
     const product = await prisma.product.findUnique({
@@ -23,17 +25,11 @@ export async function GET(request: NextRequest, { params }: Params) {
     });
 
     if (!product) {
-      return NextResponse.json(
-        { error: "Produit non trouvé" },
-        { status: 404 }
-      );
+      return NextResponse.json({ error: "Produit non trouvé" }, { status: 404 });
     }
 
     return NextResponse.json(product, { status: 200 });
   } catch (error) {
-    return NextResponse.json(
-      { error: "Erreur serveur" },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: "Erreur serveur" }, { status: 500 });
   }
 }

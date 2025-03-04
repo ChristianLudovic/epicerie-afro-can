@@ -16,7 +16,7 @@ interface Product {
 }
 
 export default function ProductPage() {
-    const { id } = useParams(); // Récupère l'id de l'URL
+    const { id } = useParams() as { id: string };
     const [product, setProduct] = useState<Product | null>(null);
     const [loading, setLoading] = useState<boolean>(true);
     const [error, setError] = useState<string | null>(null);
